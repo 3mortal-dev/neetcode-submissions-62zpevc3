@@ -1,0 +1,27 @@
+class MinStack {
+    std::stack<std::pair<int,int>> st;
+public:
+    MinStack() { }
+    
+    void push(int val) {
+        if(st.empty())
+        {
+            st.push(make_pair(val,val));
+            return;
+        }
+        int mini = std::min(val, st.top().second);
+        st.push(make_pair(val, mini));
+    }
+    
+    void pop() {
+        st.pop();
+    }
+    
+    int top() {
+        return st.top().first;
+    }
+    
+    int getMin() {
+        return st.top().second;
+    }
+};
